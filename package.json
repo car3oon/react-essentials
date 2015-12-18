@@ -11,6 +11,7 @@
   "devDependencies": {
     "babel-preset-react": "^6.3.13",
     "babelify": "^7.2.0",
+    "browser-sync": "^2.10.1",
     "browserify": "^12.0.1",
     "gulp": "^3.9.0",
     "vinyl-source-stream": "^1.1.0"
