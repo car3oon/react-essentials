@@ -3,54 +3,62 @@ var Stream = require('./Stream.react');
 var Collection = require('./Collection.react');
 
 var Application = React.createClass({
+  
+  getInitialState: function () {
+    return {
+      collectionTweets: {}
+    };
+  },
 
-    getInitialState: function() {
-        return {
-            collectionTweets: {}
-        };
-    },
+  addTweetToCollection: function (tweet) {
+    var collectionTweets = this.state.collectionTweets;
+    
+    collectionTweets[tweet.id] = tweet;
+    
+    this.setState({
+      collectionTweets: collectionTweets
+    }); 
+  },
 
-    addTweetToCollection: function(tweet) {
-        var collectionTweets = this.state.collectionTweets;
+  removeTweetFromCollection: function (tweet) {
+    var collectionTweets = this.state.collectionTweets;
+    
+    delete collectionTweets[tweet.id];
+    
+    this.setState({
+      collectionTweets: collectionTweets
+    }); 
+  },
 
-        collectionTweets[tweet.id] = tweet;
+  removeAllTweetsFromCollection: function () {
+    this.setState({
+      collectionTweets: {}
+    });
+  },
 
-        this.setState({
-            collectionTweets: collectionTweets
-        })
-    },
+  render: function () {
+    return (
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-4 text-center">
 
-    removeTweetToCollection: function(tweet) {
-        var collectionTweets = this.state.collectionTweets;
+            <Stream onAddTweetToCollection={this.addTweetToCollection}/>
 
-        delete collectionTweets[tweet.id];
+          </div>
+          <div className="col-md-8">
 
-        this.setState({
-            collectionTweets: collectionTweets
-        })
-    },
+            <Collection
+              tweets={this.state.collectionTweets}
+              onRemoveTweetFromCollection={this.
+              removeTweetFromCollection}
+              onRemoveAllTweetsFromCollection={this.
+              removeAllTweetsFromCollection} />
 
-    removeAllTweetsFromCollection: function () {
-        this.setState({
-            collectionTweets: {}
-        });
-    },
-
-    render: function() {
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-md-4 text-center">
-                    <Stream onAddTweetToCollection={this.addTweetToCollection} />
-                </div>
-                <div className="col-md-8">
-                    <Collection
-                        tweets={this.state.collectionTweets}
-                        onRemoveTweetFromCollection={this.removeTweetFromCollection}
-                        onRemoveAllTweetsFromCollection={this.removeAllTweetsFromCollection} />
-                </div>
-            </div>
+          </div>
         </div>
-    }
+      </div>
+    );
+  }
 });
 
-module.export = Application;
+module.exports = Application;
