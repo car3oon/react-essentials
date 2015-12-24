@@ -7,7 +7,7 @@ var inputStyle = {
 };
 
 var CollectionRenameForm = React.createClass({
-  
+
   getInitialState: function() {
     return {
       inputValue: this.props.name
@@ -46,20 +46,20 @@ var CollectionRenameForm = React.createClass({
     return (
       <form className="form-inline" onSubmit={this.handleSubmit}>
         <Header text="Collection name:" />
-        
+
         <div className="form-group">
           <input
             className="form-control"
             style={inputStyle}
             onChange={this.handleInputValueChange}
-            value={this.state.inputValue}
+            placeholder={this.state.inputValue}
             ref="collectionName" />
         </div>
 
         <Button label="Change" handleClick={this.handleFormSubmit} />
         <Button label="Cancel" handleClick={this.handleFormCancel} />
       </form>
-    ); 
+    );
   }
 });
 

@@ -9,7 +9,7 @@ var tweetStyle = {
 };
 
 var imageStyle = {
-  maxHeight: '400px',
+  maxWidth: '100%',
   boxShadow: '0px 1px 1px 0px #aaa',
   border: '1px solid #fff'
 };
@@ -37,7 +37,7 @@ var Tweet = React.createClass({
 
     if (onImageClick) {
       onImageClick(tweet);
-    } 
+    }
   },
 
   render: function () {
