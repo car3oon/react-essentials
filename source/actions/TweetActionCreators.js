@@ -1,8 +1,8 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 
-function reciveTweet(tweet) {
+function receiveTweet(tweet) {
     var action = {
-        type: 'recive_tweet',
+        type: 'receive_tweet',
         tweet: tweet
     };
 
@@ -10,5 +10,5 @@ function reciveTweet(tweet) {
 }
 
 module.exports = {
-    reciveTweet: reciveTweet
-}
+    receiveTweet: receiveTweet
+};
