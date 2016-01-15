@@ -11,14 +11,26 @@ var Stream = React.createClass({
         };
     },
 
+    componentDidMount: function() {
+        TweetStore.addChangeListener(this.onTweetChange);
+    },
+
+    componentWillUpdate: function() {
+        TweetStore.removeChangeListener(this.onTweetChange);
+    },
+
+    onTweetChange: function() {
+        this.setState({
+            tweet: TweetStore.getTweet()
+        });
+    },
+
     render: function () {
         var tweet = this.state.tweet;
 
         if (tweet) {
             return (
-                <StreamTweet
-                    tweet={tweet}
-                    onAddTweetToCollection={this.props.onAddTweetToCollection} />
+                <StreamTweet tweet={tweet} />
             );
         }
 
