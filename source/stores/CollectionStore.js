@@ -68,7 +68,7 @@ function handleAction(action) {
             emitChange();
             break;
 
-        defaul:
+        default: // ... do nothing
 
     }
 }
