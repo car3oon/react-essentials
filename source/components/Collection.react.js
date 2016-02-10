@@ -19,7 +19,7 @@ var Collection = React.createClass({
     },
 
     componentWillUnmount: function() {
-        CollectionStore.addChangeListener(this.onCollectionChange);
+        CollectionStore.removeChangeListener(this.onCollectionChange);
     },
 
     onCollectionChange: function() {
